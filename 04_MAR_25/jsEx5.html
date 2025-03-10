@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Example 1</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+
+        <div>
+            <label for="txt1">Value 1</label>
+            <input type="text" id="val1" name="val1" value="" placeholder="Enter the value" >  <!-- val1 = "abc" -->
+        </div>
+        <div>
+            <label for="txt2">Value 2</label>
+            <input type="text" id="val2" name="val2" value="" placeholder="Enter the value"> <!-- val2 = "xyz" -->
+        </div>
+        <div> <button onclick="getResult()" >Submit</button></div>
+        <div id="fnlresult"></div>
+   <script>
+    function getResult(){
+        var val1 = document.getElementById('val1').value; // val1 = "abc"
+        var val2 =document.getElementById('val2').value; // val2 = "xyz"
+        var result;  //
+   
+        
+
+
+        if(!isNaN(val1)  && !isNaN(val2)){ // val1 = "10" val2 = "20"   || 1 && 1  =  0 && 0
+        let resulta = parseFloat(val1) + parseFloat(val2);  // 30
+        let results = parseFloat(val1) - parseFloat(val2);  // -10
+        let resultm = parseFloat(val1) * parseFloat(val2);  // 200
+        let resultd = parseFloat(val1) / parseFloat(val2);  // 0.5
+        let resultmod = parseFloat(val1) % parseFloat(val2); // 10   
+        let resultinc =  parseFloat(val1); // 10
+        let resultdec =  parseFloat(val2); // 20
+        let resultexe = parseFloat(val1) ** parseFloat(val2); // 100000000000000000000
+        //resultinc++;
+        //resultdec--;
+            result =`<table>
+                <tr>
+                  <th>X</th>
+                  <th>Y</th>
+                  <th>OP</th>
+                  <th>EXP</th>
+                  <th>Result</th>
+                </tr>
+                <tr>
+                  <td>${val1}</td>
+                  <td>${val2}</td>
+                  <td>+</td>
+                  <td>${val1}+${val2}</td>
+                  <td>${resulta}</td>
+                </tr>
+                 <tr>
+                  <td>${val1}</td>
+                  <td>${val2}</td>
+                  <td>-</td>
+                  <td>${val1}-${val2}</td>
+                  <td>${results}</td>
+                </tr>
+                 <tr>
+                  <td>${val1}</td>
+                  <td>${val2}</td>
+                  <td>*</td>
+                  <td>${val1}*${val2}</td>
+                  <td>${resultm}</td>
+                </tr>
+                <tr>
+                  <td>${val1}</td>
+                  <td>${val2}</td>
+                  <td>/</td>
+                  <td>${val1}/${val2}</td>
+                  <td>${resultd}</td>
+                </tr>
+                <tr>
+                  <td>${val1}</td>
+                  <td>${val2}</td>
+                  <td>%</td>
+                  <td>${val1}%${val2}</td>
+                  <td>${resultmod}</td>
+                </tr>
+                <tr>
+                  <td>${val1}</td>
+                  <td>${val2}</td>
+                  <td>++</td>
+                  <td>++${val1}</td>
+                  <td>${++resultinc}</td>
+                </tr>
+                <tr>
+                  <td>${val1}</td>
+                  <td>${val2}</td>
+                  <td>--</td>
+                  <td>--${val2}</td>
+                  <td>${--resultdec}</td>
+                </tr>
+                <tr>
+                  <td>${val1}</td>
+                  <td>${val2}</td>
+                  <td>**</td>
+                  <td>${val1}**${val2}</td>
+                  <td>${resultexe}</td>
+                </tr>
+              </table>`;
+              
+
+
+        }else{
+            result = val1 + val2; // abcxyz
+        }
+        document.getElementById('fnlresult').innerHTML = result; 
+    }
+</script> 
+</body>
+</html>

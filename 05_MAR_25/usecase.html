@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flowchart Logic</title>
+</head>
+<body>
+    <h2>Enter Values</h2>
+    <label for="x">Enter X:</label>
+    <input type="text" id="x">
+    <label for="y">Enter Y:</label>
+    <input type="text" id="y">
+    <button onclick="processValues()">Submit</button>
+    
+    <div id="output"></div>
+    
+    <script>
+        function processValues() {
+            let x = document.getElementById("x").value;
+            let y = document.getElementById("y").value;
+            let outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = "";
+            
+            if (isNaN(x) || isNaN(y)) {
+                outputDiv.innerHTML = generateStringTable(x + y);
+                return;
+            }
+            
+            x = Number(x);
+            y = Number(y);
+            
+            if (x >= 10 || y >= 10) {
+                outputDiv.innerHTML = generateArithmeticTable(x, y);
+                return;
+            }
+            
+            outputDiv.innerHTML = generateAlgebraicTable(x, y);
+        }
+        
+        function generateStringTable(str) {
+            return `<h3>String Operations</h3>
+                    <p>Reverse: ${str.split('').reverse().join('')}</p>
+                    <p>Length: ${str.length}</p>
+                    <p>Concatenation with 'Test': ${str + 'Test'}</p>`;
+        }
+        
+        function generateArithmeticTable(x, y) {
+            return `<h3>Arithmetic Operations</h3>
+                    <p>Addition: ${x + y}</p>
+                    <p>Subtraction: ${x - y}</p>
+                    <p>Multiplication: ${x * y}</p>
+                    <p>Division: ${x / y}</p>`;
+        }
+        
+        function generateAlgebraicTable(x, y) {
+            return `<h3>Algebraic Operations</h3>
+                    <p>(x+y)^2: ${(x + y) ** 2}</p>
+                    <p>(x-y)^2: ${(x - y) ** 2}</p>
+                    <p>x^2 + y^2: ${x ** 2 + y ** 2}</p>`;
+        }
+    </script>
+</body>
+</html>

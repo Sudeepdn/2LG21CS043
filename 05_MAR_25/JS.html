@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Example 1</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <div>
+        <label for="input1">Value 1:</label>
+        <input type="number" id="input1" placeholder="Enter number">
+    </div>
+    <div>
+        <label for="input2">Value 2:</label>
+        <input type="number" id="input2" placeholder="Enter number">
+    </div>
+    <div>
+        <button onclick="processData()">Submit</button>
+    </div>
+
+    <div class="container" id="resultsContainer"></div>
+
+    <script>
+        function processData() {
+            var val1 = document.getElementById('input1').value.trim();
+            var val2 = document.getElementById('input2').value.trim();
+            var num1 = parseFloat(val1);
+            var num2 = parseFloat(val2);
+            var container = document.getElementById('resultsContainer');
+            container.innerHTML = "";
+
+            if (!isNaN(num1) && !isNaN(num2)) {
+                var operations = [
+                    { formula: "a² - b² = (a - b)(a + b)", exp: `${num1}² - ${num2}² = (${num1} - ${num2})(${num1} + ${num2})`, result: (num1 - num2) * (num1 + num2) },
+                    { formula: "(a + b)² = a² + 2ab + b²", exp: `(${num1} + ${num2})² = ${num1}² + 2(${num1})(${num2}) + ${num2}²`, result: (num1 ** 2) + 2 * num1 * num2 + (num2 ** 2) },
+                    { formula: "a² + b² = (a + b)² - 2ab", exp: `${num1}² + ${num2}² = (${num1} + ${num2})² - 2(${num1})(${num2})`, result: ((num1 + num2) ** 2) - 2 * num1 * num2 },
+                    { formula: "(a - b)² = a² - 2ab + b²", exp: `(${num1} - ${num2})² = ${num1}² - 2(${num1})(${num2}) + ${num2}²`, result: (num1 ** 2) - 2 * num1 * num2 + (num2 ** 2) },
+                    { formula: "a³ - b³ = (a - b)(a² + ab + b²)", exp: `${num1}³ - ${num2}³ = (${num1} - ${num2})(${num1}² + (${num1})(${num2}) + ${num2}²)`, result: (num1 - num2) * (num1 ** 2 + num1 * num2 + num2 ** 2) }
+                ];
+
+                operations.forEach(op => {
+                    var box = document.createElement("div");
+                    box.className = "box";
+                    box.innerHTML = `<div class="formula">${op.formula}</div>
+                                    <div>${op.exp}</div>
+                                    <div>Result: ${op.result}</div>`;
+                    container.appendChild(box);
+                });
+            } else {
+                alert("Please enter valid numeric inputs.");
+            }
+        }
+    </script>    
+</body>
+</html>
