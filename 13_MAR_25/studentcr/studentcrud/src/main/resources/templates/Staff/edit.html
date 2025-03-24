@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Staff</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div th:replace="fragments/nav :: menu"></div>
+    <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="w-50">
+            <h1 class="mt-5 text-center">Edit Staff</h1>
+            <form th:action="@{/staff/update/{id}(id=${staff.id})}" th:object="${staff}" method="post" class="mt-3">
+                <input type="hidden" th:field="*{id}">
+                <div class="form-group">
+                    <label for="staffName">Name</label>
+                    <input type="text" class="form-control" id="staffName" th:field="*{name}" placeholder="Enter staff name" required>
+                </div>
+                <div class="form-group">
+                    <label for="staffEmail">Email</label>
+                    <input type="email" class="form-control" id="staffEmail" th:field="*{email}" placeholder="Enter staff email" required>
+                </div>
+                <div class="form-group">
+                    <label for="staffPhone">Phone</label>
+                    <input type="text" class="form-control" id="staffPhone" th:field="*{phone}" placeholder="Enter staff phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="staffProfilePic">Profile Picture</label>
+                    <input type="file" class="form-control-file" id="staffProfilePic" name="profilepic" accept="image/*" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Update</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
